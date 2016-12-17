@@ -1,0 +1,22 @@
+{
+  "name": "checkpoint-2-string-extension",
+  "version": "1.0.0",
+  "description": "Add more String manipulation features to the String class",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andela-aolaniran/checkpoint-2-string-extension.git"
+  },
+  "keywords": [
+    "String"
+  ],
+  "author": "Azeez Olaniran",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andela-aolaniran/checkpoint-2-string-extension/issues"
+  },
+  "homepage": "https://github.com/andela-aolaniran/checkpoint-2-string-extension#readme"
+}
