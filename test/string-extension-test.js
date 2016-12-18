@@ -31,15 +31,11 @@ describe('String Extension', () => {
       assert.typeOf(''.toUpper(), 'string');
     });
     it('should return an uppercase version of the String', () => {
-      assert.strictEqual('uppercase'.toUpper, 'UPPERCASE');
-    });
-    it(`should NOT throw an error for Strings containing non-alphabetic
-     characters`, () => {
-      assert.doesNotThrow(''.toUpper);
+      assert.strictEqual('uppercase'.toUpper(), 'UPPERCASE');
     });
     it('should return the String with all alphabet characters in upper-case',
       () => {
-        assert.strictEqual('8 13 a B c D 700  '.toUpper, '8 13 A B C D 700  ');
+        assert.strictEqual('8 13 a B c D 700  '.toUpper(), '8 13 A B C D 700  ');
       });
     it('should return and empty String for an empty String', () => {
       assert.strictEqual(''.toUpper(), '');
