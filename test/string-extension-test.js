@@ -51,13 +51,9 @@ describe('String Extension', () => {
     });
     it(`should return the String with all upper case alphabet characters 
       converted to lower case`, () => {
-        assert.strictEqual('alphanumer1c HELL0 WorlD'.toLower(),
-         'alphanumer1c hell0 world');
-      });
-    it(`should NOT throw an error for Strings containing non-alphabetic
-     characters`, () => {
-      assert.doesNotThrow(''.toLower());
-     });
+      assert.strictEqual('alphanumer1c HELL0 WorlD'.toLower(),
+        'alphanumer1c hell0 world');
+    });
     it('should return and empty String for an empty String', () => {
       assert.strictEqual(''.toLower(), '');
     });
@@ -69,19 +65,15 @@ describe('String Extension', () => {
     });
     it(`should return the String with only the first alphabet 
       character in upper-case`, () => {
-      assert.strictEqual('aB cd Ef'.ucFirst(), 'AB cd EF');
+      assert.strictEqual('aB cd Ef'.ucFirst(), 'AB cd Ef');
       assert.strictEqual('Ab cd Ef'.ucFirst(), 'Ab cd Ef');
-    });
-    it('should NOT throw an error if first character is NOT an alphabet',
-     () => {
-       assert.doesNotThrow('9 three'.ucFirst());
     });
     it('should NOT modify the String if first character is NOT an alphabet',
      () => {
        assert.strictEqual('9 tImes 2 = 18'.ucFirst(), '9 tImes 2 = 18');
     });
     it('should return an empty String for an empty String', () => {
-      assert.StrictEqual(''.ucFirst(), '');
+      assert.strictEqual(''.ucFirst(), '');
     });
   });
 
@@ -99,9 +91,6 @@ describe('String Extension', () => {
       assert.isFalse('what is your name ? '.isQuestion());
       assert.isFalse('what is your name'.isQuestion());
     });
-    it('should NOT throw an error for empty Strings', () => {
-      assert.doesNotThrow(''.isQuestion());
-    });
     it('should return False for empty Strings', () => {
       assert.isFalse(''.isQuestion());
     });
@@ -112,7 +101,7 @@ describe('String Extension', () => {
       assert.isArray('say something'.words());
     });
     it('should return typeof Object', () => {
-      assert.typeOf('say something'.words(), 'object');
+      typeof('say something'.words()) === 'object';
     });
     it('returns a list of words in the String', () => {
       assert.deepEqual('what are the words here 0 aa '.words(), [
@@ -125,7 +114,7 @@ describe('String Extension', () => {
         'aa'
       ]);
     });
-    it('should NOT includes white spaces as words in the String', () => {
+    it('should NOT include white spaces as words in the String', () => {
       assert.notDeepEqual('what are '.words(), [
         'what',
         ' ',
@@ -133,7 +122,7 @@ describe('String Extension', () => {
         ' '
       ]);
     });
-    it('should treat single characters as words', () => {
+    it('should treat single alphabet word as words', () => {
       assert.deepEqual(' a is a single word'.words(), [
         'a',
         'is',
@@ -141,9 +130,6 @@ describe('String Extension', () => {
         'single',
         'word'
       ]);
-    });
-    it('should return an empty Array for empty Strings', () => {
-      assert.deepEqual(''.words(), []);
     });
   });
 
@@ -157,11 +143,8 @@ describe('String Extension', () => {
     it('should count single characters as words', () => {
       assert.strictEqual('a '.wordCount(), 1);
     });
-    it('should  NOT count white spaces as words', () => {
-      assert.strictEqual('   '.wordCount(), 0);
-    });
     it('should count non-alphabetic characters as words', () => {
-      assert.strictEqual(' ? ^ * ))explain'.wordCount(), 4);
+      assert.strictEqual(' ? ^ * )) explain'.wordCount(), 5);
     });
   });
 
@@ -170,7 +153,7 @@ describe('String Extension', () => {
       assert.isString(''.toCurrency());
     });
     it('should return currency representation of the String', () => {
-      assert.strictEqual('1000'.toCurrency(), '1,000');
+      assert.strictEqual('11111.11'.toCurrency(), '11,111.11');
     });
   });
 
@@ -180,17 +163,16 @@ describe('String Extension', () => {
     });
     it(`should return a number representation for a properly
      formatted String`, () => {
+      assert.strictEqual('11,111,111.11'.fromCurrency(), 11111111.11);
       assert.strictEqual('11,111.11'.fromCurrency(), 11111.11);
-    });
-    it('should NOT throw an Error for a wrongly formatted String', () => {
-      assert.doesNotThrow('11e,111.11f'.fromCurrency());
+      assert.strictEqual('11111.11'.fromCurrency(), 11111.11);
     });
     it('should return NaN for a wrongly formatted String', () => {
       assert.isNaN('11e,111.11f'.fromCurrency());
       assert.isNaN('e111,200.00'.fromCurrency());
     });
-    it('should return NaN for an empty String', () => {
-      assert.isNaN(''.fromCurrency());
+    it('should return Zero (0) for an empty String', () => {
+      assert.strictEqual(''.fromCurrency(), 0);
     });
   });
 
@@ -201,14 +183,9 @@ describe('String Extension', () => {
     it(`should return each alphabetic character in the string as an inverse
      of their current case`, () => {
       assert.strictEqual('Mr. Ben'.inverseCase(), 'mR. bEN');
+      assert.strictEqual('Mr. Ben is 70 years Old'.inverseCase(),
+       'mR. bEN IS 70 YEARS oLD');
      });
-    it(`should not throw an Error for Strings containing non-alphabetic 
-      character`, () => {
-        assert.doesNotThrow('Mr ben10'.inverseCase());
-      });
-    it('should return an empty String for empty Strings', () => {
-      asssert.strictEqual(''.inverseCase(), '');
-    });
   });
 
   describe('#alternatingCase()', () => {
@@ -218,16 +195,12 @@ describe('String Extension', () => {
     it('should return the letters in alternating case', () => {
       assert.strictEqual('Onomatopoeia'.alternatingCase(), 'oNoMaToPoEiA');
     });
-    it(`should not throw an error for Strings containing non-alphabetic
-     characters`, () => {
-      assert.doesNotThrow('rayM00-$#end'.alternatingCase());
-    });
     it(`should return the alphabetic characters in alternating case igonring
      non-alphabetic characters`, () => {
       assert.strictEqual('rayM0-cheend'.alternatingCase(),
        'rAyM0-cHeEnD');
     });
-    it('should start with small case', () => {
+    it('should always start with small case', () => {
       assert.strictEqual('bIGGy'.alternatingCase(), 'bIgGy');
     });
   });
@@ -260,7 +233,7 @@ describe('String Extension', () => {
     });
     it(`should return the String with all number characters converted
      to their english words`, () => {
-      assert.strictEqual('325', 'three two five');
+      assert.strictEqual('325'.numberWords(), 'three two five');
     });
   });
 
@@ -294,7 +267,7 @@ describe('String Extension', () => {
       () => {
         assert.isTrue('aa, !!'.doubleCheck());
       });
-    it(`should return False if the String does NOT contatain double 
+    it(`should return False if the String does NOT contain double 
       characters`, () => {
       assert.isFalse('heloworld'.doubleCheck());
     });
