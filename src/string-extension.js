@@ -17,9 +17,8 @@ const stringExtension = {
   * converted to upper case
   */
   toUpper() {
-    return this.replace(/[a-z]/g, (match) => {
-      return String.fromCharCode(match.charCodeAt() - 32);
-    });
+    return this.replace(/[a-z]/g, match =>
+      String.fromCharCode(match.charCodeAt() - 32));
   },
   /**
   * Replace all upper case letters in this String with lower case
@@ -27,9 +26,8 @@ const stringExtension = {
   * to lower case
   */
   toLower() {
-    return this.replace(/[A-Z]/g, (match) => {
-      return String.fromCharCode(match.charCodeAt() + 32);
-    });
+    return this.replace(/[A-Z]/g, match =>
+      String.fromCharCode(match.charCodeAt() + 32));
   },
   /**
   * Transform the first alphabet of the String to Upper case
@@ -38,9 +36,7 @@ const stringExtension = {
   * upper case.
   */
   ucFirst() {
-    return this.replace(/^[a-z]/, (match) => {
-      return match.toUpper();
-    });
+    return this.replace(/^[a-z]/, match => match.toUpper());
   },
   /**
   * Check if this String ends with a question (?) mark
@@ -71,7 +67,7 @@ const stringExtension = {
   * @return{String} - A String formated to Currency
   */
   toCurrency() {
-    return this.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+    return this.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
   },
   /**
   * Create a number from this String formatted as a currency
@@ -125,11 +121,20 @@ const stringExtension = {
   * transformed to their English word
   */
   numberWords() {
-    const numberWords = ['zero ', 'one ', 'two ', 'three ', 'four ', 'five ',
-      'six ', 'seven ', 'eight ', 'nine '];
-    const convertedString = this.replace(/[0-9]/g, (match) => {
-      return numberWords[Number(match)];
-    });
+    const numberText = [
+      'zero ',
+      'one ',
+      'two ',
+      'three ',
+      'four ',
+      'five ',
+      'six ',
+      'seven ',
+      'eight ',
+      'nine '
+    ];
+    const convertedString = this.replace(/[0-9]/g, match =>
+      numberText[Number(match)]);
     return convertedString.replace(/\s$/, '');
   },
   /**
