@@ -1,4 +1,5 @@
 'use strict';
+
 /* Object containing all feature methods to
  be added to the String class*/
 const stringExtension = {
@@ -70,7 +71,7 @@ const stringExtension = {
   * @return{String} - A String formated to Currency
   */
   toCurrency() {
-    return this.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+    return this.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
   },
   /**
   * Create a number from this String formatted as a currency
