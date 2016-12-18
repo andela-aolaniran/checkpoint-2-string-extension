@@ -4,7 +4,8 @@
   "description": "Add more String manipulation features to the String class",
   "main": "index.js",
   "scripts": {
-    "test": "node ./node_modules/.bin/mocha"
+    "test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/.bin/_mocha",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,8 @@
   "homepage": "https://github.com/andela-aolaniran/checkpoint-2-string-extension#readme",
   "devDependencies": {
     "chai": "^3.5.0",
+    "coveralls": "^2.11.15",
+    "istanbul": "^0.4.5",
     "mocha": "^3.2.0"
   },
   "dependencies": {
