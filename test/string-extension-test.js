@@ -6,7 +6,6 @@ require('../src/string-extension');
 
 
 describe('String Extension', () => {
-  it('should exist');
   describe('#hasVowels()', () => {
     it('should return typeof Boolean');
     it('should return True if the String contains any of the English vowel in lower case');
