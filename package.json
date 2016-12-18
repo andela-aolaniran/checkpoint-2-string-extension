@@ -4,7 +4,7 @@
   "description": "Add more String manipulation features to the String class",
   "main": "index.js",
   "scripts": {
-    "test": "node ./node_modules/.bin/mocha --reporter spec ./test/string-extension-test.js"
+    "test": "node ./node_modules/.bin/mocha"
   },
   "repository": {
     "type": "git",
