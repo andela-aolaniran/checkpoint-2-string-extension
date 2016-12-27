@@ -254,8 +254,10 @@ describe('String Extension', () => {
   });
 
   describe('#numberWords()', () => {
-    it('should return typeof String', () => {
+    it('should return typeof String for any String', () => {
       assert.isString('word'.numberWords());
+      assert.isString(''.numberWords());
+      assert.isString('#$%@@#f'.numberWords());
     });
     it(`should return the String with all number characters converted
      to their english words`, () => {
@@ -264,13 +266,15 @@ describe('String Extension', () => {
   });
 
   describe('#isDigit()', () => {
-    it('should return typeof Boolean', () => {
+    it('should return typeof Boolean for any String', () => {
       assert.isBoolean('1'.isDigit());
+      assert.isBoolean(''.isDigit());
+      assert.isBoolean('*$#4'.isDigit());
     });
-    it('should return true for single digits', () => {
+    it('should return True for single digits', () => {
       assert.isTrue('3'.isDigit());
     });
-    it('should return false for non-single digits', () => {
+    it('should return False for non-single digits', () => {
       assert.isFalse('34'.isDigit());
     });
     it('should return false for non-numeric Strings', () => {
