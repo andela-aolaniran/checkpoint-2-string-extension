@@ -171,7 +171,8 @@ const stringExtension = {
   * otherwise False
   */
   doubleCheck() {
-    return this.match(/(.)\1/g) !== null;
+    const match = /(.)\1/g;
+    return match.test(this);
   }
 };
 
