@@ -48,13 +48,14 @@ describe('String Extension', () => {
   });
 
   describe('#toLower()', () => {
-    it('should return typeof String', () => {
+    it('should return typeof String for any String', () => {
       assert.typeOf(''.toLower(), 'string');
+      assert.typeOf('any String ^ #@+='.toLower(), 'string');
     });
     it('should return a lower case version of the String', () => {
       assert.strictEqual('SayHello'.toLower(), 'sayhello');
     });
-    it(`should return the String with all upper case alphabet characters 
+    it(`should return the String with all upper case alphabets 
       converted to lower case`, () => {
       assert.strictEqual('alphanumer1c HELL0 WorlD'.toLower(),
         'alphanumer1c hell0 world');

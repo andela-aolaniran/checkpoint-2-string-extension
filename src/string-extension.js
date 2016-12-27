@@ -23,8 +23,8 @@ const stringExtension = {
       String.fromCharCode(match.charCodeAt() - 32));
   },
   /**
-  * Replace all upper case letters in this String with lower case
-  * @return{String} - This String with all upper case letters transformed
+  * Replaces all upper case alphabets in this String with lower case
+  * @return{String} - This String with all upper case alphabets transformed
   * to lower case
   */
   toLower() {
