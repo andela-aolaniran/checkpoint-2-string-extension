@@ -32,10 +32,10 @@ const stringExtension = {
       String.fromCharCode(match.charCodeAt() + 32));
   },
   /**
-  * Transform the first alphabet of the String to Upper case
-  * if it is in lower case.
-  * @return{String} - This string with it's first alphabet converted to
-  * upper case.
+  * Transforms the first character of the String (if it's an alphabet)
+  * from lower case to upper case.
+  * @return{String} - This string with it's first character (if it's an
+  * alphabet) converted to upper case.
   */
   ucFirst() {
     return this.replace(/^[a-z]/, match => match.toUpper());

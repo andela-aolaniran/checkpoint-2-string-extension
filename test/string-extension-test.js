@@ -66,15 +66,16 @@ describe('String Extension', () => {
   });
 
   describe('#ucFirst()', () => {
-    it('should return typeof String', () => {
+    it('should return typeof String for any String', () => {
       assert.typeOf(''.ucFirst(), 'string');
+      assert.typeOf('2m1xed Str!ng ^&8*'.ucFirst(), 'string');
     });
-    it(`should return the String with only the first alphabet 
-      character in upper-case`, () => {
+    it(`should return the String with only the first 
+      character (if it's an alphabet) converted to upper case`, () => {
       assert.strictEqual('aB cd Ef'.ucFirst(), 'AB cd Ef');
       assert.strictEqual('Ab cd Ef'.ucFirst(), 'Ab cd Ef');
     });
-    it('should NOT modify the String if first character is NOT an alphabet',
+    it('should NOT modify the String if the first character is NOT an alphabet',
      () => {
        assert.strictEqual('9 tImes 2 = 18'.ucFirst(), '9 tImes 2 = 18');
     });
