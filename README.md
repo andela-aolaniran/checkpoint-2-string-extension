@@ -3,3 +3,8 @@
 
 An extension of the javascript String class. Using Prototype Oriented Programming more String manipulation features
 are added to the String class.
+
+License
+----
+
+MIT
