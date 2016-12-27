@@ -87,7 +87,7 @@ const stringExtension = {
     return `${builtCharacteristic}.${mantissa}`;
   },
   /**
-  * Create a number from this String formatted as a currency
+  * Create a number from this currency formatted String
   * @return{Number} - A Number representation of this String
   */
   fromCurrency() {

@@ -173,6 +173,7 @@ describe('String Extension', () => {
   describe('#fromCurrency()', () => {
     it('should return typeof Number', () => {
       assert.isNumber('1000'.fromCurrency());
+      assert.isNumber('9eee'.fromCurrency());
     });
     it(`should return a number representation for a properly
      formatted String`, () => {
