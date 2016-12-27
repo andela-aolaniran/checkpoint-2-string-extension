@@ -165,10 +165,10 @@ const stringExtension = {
     return this.match(/^[0-9]$/) !== null;
   },
   /**
-  * Returns true if a string contains double characters
-  * (including whitespace character)
+  * Returns true if this String contains any character repeated twice
+  * in a sequence (including whitespace characters)
   * @return{Boolean} - True if this String contains double characters
-  * False otherwise
+  * otherwise False
   */
   doubleCheck() {
     return this.match(/(.)\1/g) !== null;

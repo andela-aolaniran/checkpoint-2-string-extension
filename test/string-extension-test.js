@@ -296,6 +296,7 @@ describe('String Extension', () => {
     it('should return True if the String contains double characters',
       () => {
         assert.isTrue('aa, !!'.doubleCheck());
+        assert.isTrue('my name hase double characters -> Azeez'.doubleCheck());
     });
     it('should return True for double space characters',
       () => {
@@ -304,6 +305,7 @@ describe('String Extension', () => {
     it(`should return False if the String does NOT contain double 
       characters`, () => {
       assert.isFalse('heloworld'.doubleCheck());
+      assert.isFalse(' single space test'.doubleCheck());
     });
     it('should return false for empty Strings', () => {
       assert.isFalse(''.doubleCheck());
