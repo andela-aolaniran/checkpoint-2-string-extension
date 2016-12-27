@@ -191,8 +191,9 @@ describe('String Extension', () => {
   });
 
   describe('#inverseCase()', () => {
-    it('should return typeof String', () => {
+    it('should return typeof String for any String', () => {
       assert.isString('word'.inverseCase());
+      assert.isString('^@# he'.inverseCase());
     });
     it(`should return each alphabetic character in the string as an inverse
      of their current case`, () => {

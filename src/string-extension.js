@@ -94,8 +94,8 @@ const stringExtension = {
     return Number(this.replace(/,/g, ''));
   },
   /**
-  * @return{String} - Returns each letter in the string as an inverse of its
-  * current case
+  * @return{String} - Returns each alphabetic character in this String
+  * as an inverse of its current case
   */
   inverseCase() {
     return this.replace(/[a-zA-Z]/g, (match) => {
