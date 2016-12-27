@@ -142,8 +142,9 @@ describe('String Extension', () => {
   });
 
   describe('#wordCount()', () => {
-    it('should return typeof Number', () => {
+    it('should return typeof Number for any String', () => {
       assert.isNumber('how many words have we got here ?'.wordCount());
+      assert.isNumber(''.wordCount());
     });
     it('should return the exact number of words in the String', () => {
       assert.strictEqual('hello world yahoo'.wordCount(), 3);
