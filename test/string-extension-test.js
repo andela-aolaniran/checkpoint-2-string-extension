@@ -6,11 +6,14 @@ require('../src/string-extension');
 
 describe('String Extension', () => {
   describe('#hasVowels()', () => {
-    it('should return typeof Boolean', () => {
+    it('should return typeof Boolean for any String', () => {
+      // check empty string
       assert.typeOf(''.hasVowels(), 'boolean');
+      // check a non-empty string
+      assert.typeOf('Non-empty String'.hasVowels(), 'boolean');
     });
-    it(`should return True if the String contains any of the English vowel i
-      n lower case`, () => {
+    it(`should return True if the String contains any of the English vowel in
+     lower case`, () => {
         assert.isTrue('this'.hasVowels());
       });
     it(`should return True if the String contains any of the English vowel

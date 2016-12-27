@@ -5,11 +5,13 @@
 const stringExtension = {
   /**
   * Check if this String contains any of the English vowels
+  * (in upper or lower case).
   * @return{Boolean} - True if this String contains a vowel
-  * False otherwise
+  * otherwise False.
   */
   hasVowels() {
-    return this.match(/[aeiou]/i) !== null;
+    const match = /[aeiou]/i;
+    return match.test(this);
   },
   /**
   * Replace all lower case letters in this String with uppercase
