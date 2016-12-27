@@ -121,14 +121,16 @@ const stringExtension = {
     });
   },
   /**
-  * Fetch characters in the middle of a String
+  * Fetch characters in the middle of a String. Double character for
+  * even length String and single character for odd length String
   * @return{String} - The character(s) in the middle of the string
   */
   getMiddle() {
-    const halfLength = this.length / 2;
-    if (this.length % 2 === 0) {
+    const halfLength = Math.floor(this.length / 2);
+    if (this.length % 2 === 0) { // String with even length
       return this.substring(halfLength - 1, halfLength + 1);
     }
+    // String with odd length
     return this.substring(halfLength, halfLength + 1);
   },
   /**

@@ -225,8 +225,10 @@ describe('String Extension', () => {
   });
 
   describe('#getMiddle()', () => {
-    it('should return typeof String', () => {
+    it('should return typeof String for any String', () => {
       assert.isString('word'.getMiddle());
+      assert.isString(''.getMiddle());
+      assert.isString('$%#@$@a'.getMiddle());
     });
     it('should return double characters for Strings with an even length',
       () => {
@@ -236,11 +238,16 @@ describe('String Extension', () => {
       () => {
         assert.strictEqual('reads'.getMiddle().length, 1);
       });
-    it(`should return the correct character(s) at the 
-      middle of the String`, () => {
-        assert.strictEqual('reads'.getMiddle(), 'a');
-        assert.strictEqual('read'.getMiddle(), 'ea');
-      });
+    it(`should return the correct character at the 
+      middle of the String for any String of even length`, () => {
+      assert.strictEqual('reads'.getMiddle(), 'a');
+      assert.strictEqual('ABCDEFGHIJKLMNOPQRSTUVWXY'.getMiddle(), 'M');
+    });
+    it(`should return the correct characters at the middle of the 
+    String for any String of odd length`, () => {
+      assert.strictEqual('read'.getMiddle(), 'ea');
+      assert.strictEqual('ABCDEFGHIJKLMNOPQRSTUVWXYZ'.getMiddle(), 'MN');
+    });
     it('should return an empty String for empty Strings', () => {
       assert.strictEqual(''.getMiddle(), '');
     });
