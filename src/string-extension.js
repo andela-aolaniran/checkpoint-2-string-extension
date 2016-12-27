@@ -162,7 +162,8 @@ const stringExtension = {
   * False otherwise
   */
   isDigit() {
-    return this.match(/^[0-9]$/) !== null;
+    const match = /^[0-9]$/;
+    return match.test(this);
   },
   /**
   * Returns true if this String contains any character repeated twice
