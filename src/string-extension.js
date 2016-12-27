@@ -70,7 +70,21 @@ const stringExtension = {
   * @return{String} - A String formated to Currency
   */
   toCurrency() {
-    return this.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+    // get the mantissa and characteristic
+    const parts = this.split('.');
+    if (parts.length > 2) {
+      return this;
+    }
+    const mantissa = parts[1] ? parts[1] : '00';
+    const characteristic = parts[0];
+    let builtCharacteristic = '';
+    for (let i = characteristic.length - 1, j = 1; i >= 0; i -= 1, j += 1) {
+      builtCharacteristic = `${characteristic[i]}${builtCharacteristic}`;
+      if (j % 3 === 0 && j !== characteristic.length) {
+        builtCharacteristic = `,${builtCharacteristic}`;
+      }
+    }
+    return `${builtCharacteristic}.${mantissa}`;
   },
   /**
   * Create a number from this String formatted as a currency

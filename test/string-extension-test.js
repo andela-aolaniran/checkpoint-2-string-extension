@@ -158,11 +158,15 @@ describe('String Extension', () => {
   });
 
   describe('#toCurrency()', () => {
-    it('should return typeof String', () => {
-      assert.isString(''.toCurrency());
+    it('should return typeof String for a valid String', () => {
+      assert.isString('11111.11'.toCurrency());
     });
-    it('should return currency representation of the String', () => {
+    it('should return the String unchanged if it is invalid', () => {
+      assert.deepEqual('1111.11.11'.toCurrency(), '1111.11.11');
+    });
+    it('should return currency representation of the valid String', () => {
       assert.strictEqual('11111.11'.toCurrency(), '11,111.11');
+      assert.strictEqual('1100.99'.toCurrency(), '1,100.99');
     });
   });
 
