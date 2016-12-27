@@ -85,8 +85,9 @@ describe('String Extension', () => {
   });
 
   describe('#isQuestion()', () => {
-    it('should return typeof Boolean', () => {
+    it('should return typeof Boolean for any String', () => {
       assert.typeOf(''.isQuestion(), 'boolean');
+      assert.typeOf('mixed String 1@#^&8'.isQuestion(), 'boolean');
     });
     it(`should return True if the String is a question 
       (ends with a question mark)`, () => {

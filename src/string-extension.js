@@ -43,10 +43,11 @@ const stringExtension = {
   /**
   * Check if this String ends with a question (?) mark
   * @return{Boolean} - True if this string ends with a question mark
-  * False other wise
+  * otherwise False.
   */
   isQuestion() {
-    return this.match(/\?$/) !== null;
+    const match = /\?$/;
+    return match.test(this);
   },
   /**
   * Fetch an array containing all the words in this String
