@@ -106,8 +106,8 @@ const stringExtension = {
     });
   },
   /**
-  * @return{String} - Returns the letters in alternating cases, starting
-  * with a lower case
+  * @return{String} - Returns the alphabetic characters in this String
+  * in alternating cases, starting with a lower case
   */
   alternatingCase() {
     let toSmall = true;

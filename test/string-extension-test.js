@@ -194,6 +194,7 @@ describe('String Extension', () => {
     it('should return typeof String for any String', () => {
       assert.isString('word'.inverseCase());
       assert.isString('^@# he'.inverseCase());
+      assert.isString(''.inverseCase());
     });
     it(`should return each alphabetic character in the string as an inverse
      of their current case`, () => {
@@ -204,10 +205,12 @@ describe('String Extension', () => {
   });
 
   describe('#alternatingCase()', () => {
-    it('should return typeof String', () => {
+    it('should return typeof Stringfor any String', () => {
       assert.isString('word'.alternatingCase());
+      assert.isString('#$%re'.alternatingCase());
+      assert.isString(''.alternatingCase());
     });
-    it('should return the letters in alternating case', () => {
+    it('should return the alphabets in alternating case', () => {
       assert.strictEqual('Onomatopoeia'.alternatingCase(), 'oNoMaToPoEiA');
     });
     it(`should return the alphabetic characters in alternating case igonring
@@ -215,8 +218,9 @@ describe('String Extension', () => {
       assert.strictEqual('rayM0-cheend'.alternatingCase(),
        'rAyM0-cHeEnD');
     });
-    it('should always start with small case', () => {
+    it('should always start with small case alphabet', () => {
       assert.strictEqual('bIGGy'.alternatingCase(), 'bIgGy');
+      assert.strictEqual('89 Big boys are in town'.alternatingCase(), '89 bIg BoYs ArE iN tOwN');
     });
   });
 
