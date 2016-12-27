@@ -14,8 +14,8 @@ const stringExtension = {
     return match.test(this);
   },
   /**
-  * Replace all lower case letters in this String with uppercase
-  * @return{String} - This string with all lower case alphabets
+  * Replaces all lower case alphabets in this String with uppercase
+  * @return{String} - This String with all lower case alphabets
   * converted to upper case
   */
   toUpper() {

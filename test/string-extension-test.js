@@ -30,16 +30,18 @@ describe('String Extension', () => {
   });
 
   describe('#toUpper()', () => {
-    it('should return typeof String', () => {
+    it('should return typeof String for any String', () => {
       assert.typeOf(''.toUpper(), 'string');
+      assert.typeOf('abc9ef!%$'.toUpper(), 'string');
     });
     it('should return an uppercase version of the String', () => {
       assert.strictEqual('uppercase'.toUpper(), 'UPPERCASE');
     });
-    it('should return the String with all alphabet characters in upper-case',
-      () => {
-        assert.strictEqual('8 13 a B c D 700  '.toUpper(), '8 13 A B C D 700  ');
-      });
+    it(`should return the String with only all alphabet characters in 
+    upper-case`,() => { 
+      assert.strictEqual('8 13 a B c D 700  '.toUpper(),
+       '8 13 A B C D 700  ');
+    });
     it('should return and empty String for an empty String', () => {
       assert.strictEqual(''.toUpper(), '');
     });
