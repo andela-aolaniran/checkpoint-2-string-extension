@@ -105,13 +105,12 @@ describe('String Extension', () => {
   });
 
   describe('#words()', () => {
-    it('should return instanceof Array', () => {
+    it('should return instanceof Array for any String', () => {
       assert.isArray('say something'.words());
+      assert.isArray(''.words());
+      assert.isArray('@343$5%'.words());
     });
-    it('should return typeof Object', () => {
-      typeof('say something'.words()) === 'object';
-    });
-    it('returns a list of words in the String', () => {
+    it('returns a correct list of words in the String', () => {
       assert.deepEqual('what are the words here 0 aa '.words(), [
         'what',
         'are',
@@ -129,8 +128,9 @@ describe('String Extension', () => {
         'are',
         ' '
       ]);
+      assert.deepEqual('what are '.words(), ['what', 'are']);
     });
-    it('should treat single alphabet word as words', () => {
+    it('should treat single alphabets word as words', () => {
       assert.deepEqual(' a is a single word'.words(), [
         'a',
         'is',
