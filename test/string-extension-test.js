@@ -245,8 +245,7 @@ describe('String Extension', () => {
     });
     it(`should return the correct characters at the middle of the 
     String for any String of odd length`, () => {
-      assert.strictEqual('read'.getMiddle(), 'ea');
-      assert.strictEqual('ABCDEFGHIJKLMNOPQRSTUVWXYZ'.getMiddle(), 'MN');
+      assert.strictEqual('abcdefg'.getMiddle(), 'd');
     });
     it('should return an empty String for empty Strings', () => {
       assert.strictEqual(''.getMiddle(), '');
