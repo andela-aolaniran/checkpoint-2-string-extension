@@ -153,7 +153,7 @@ const stringExtension = {
       'nine '
     ];
     const convertedString = this.replace(/[0-9]/g, match =>
-      numberText[Number(match)]);
+      numberText[match]);
     return convertedString.replace(/\s$/, '');
   },
   /**
