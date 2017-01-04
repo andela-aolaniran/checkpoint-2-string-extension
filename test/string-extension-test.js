@@ -161,8 +161,11 @@ describe('String Extension', () => {
     it('should return typeof String for a valid String', () => {
       assert.isString('11111.11'.toCurrency());
     });
-    it('should return the String unchanged if it is invalid', () => {
-      assert.deepEqual('1111.11.11'.toCurrency(), '1111.11.11');
+    it('should throw an error for invalid Strings', () => {
+      assert.throws(() => { '11111.11.11'.toCurrency(); });
+    });
+    it('should NOT throw an error for a Valid String', () => {
+      assert.doesNotThrow(() => { '1111.11'.toCurrency(); });
     });
     it('should return currency representation of the valid String', () => {
       assert.strictEqual('11111.11'.toCurrency(), '11,111.11');
