@@ -4,313 +4,308 @@ const assert = require('chai').assert;
 // load string extension
 require('../src/string-extension');
 
+// class to hold all our necessary test values
+const testValues = {
+  emptyString: '',
+  nonEmptyString: 'Not Empty',
+  lowerCaseVowelWord: 'this',
+  uppercaseVowelWord: 'thIs',
+  noVowelWord: 'cNst',
+  mixedStringLowerCase: '122for *8e3$&^34',
+  mixedStringUpperCase: '122FOR *8E3$&^34',
+  lowerCaseWord: 'abcdef',
+  upperCaseWord: 'ABCDEF',
+  firstLetterUppercase: 'Abcdef',
+  firstLetterLowercase: 'aBCDEF',
+  question: 'What is your name ?',
+  questionArray: ['What', 'is', 'your', 'name', '?'],
+  validCurrencyString: '1111111.1111',
+  invalidCurrencyString: '11111.1111.111a',
+  currencyFormatedString: '1,111,111.1111',
+  doubleCharactersWord: 'hello',
+  doubleSpaceWord: '  dignity',
+  digitString: '5',
+  doubleDigitString: '10',
+  evenLengthWord: 'even',
+  oddLengthWord: 'seven'
+};
+
 describe('String Extension', () => {
   describe('#hasVowels()', () => {
     it('should return typeof Boolean for any String', () => {
       // check empty string
-      assert.typeOf(''.hasVowels(), 'boolean');
+      assert.typeOf(testValues.emptyString.hasVowels(), 'boolean');
       // check a non-empty string
-      assert.typeOf('Non-empty String'.hasVowels(), 'boolean');
+      assert.typeOf(testValues.nonEmptyString.hasVowels(), 'boolean');
     });
     it(`should return True if the String contains any of the English vowel in
      lower case`, () => {
-        assert.isTrue('this'.hasVowels());
+        assert.isTrue(testValues.lowerCaseVowelWord.hasVowels());
       });
     it(`should return True if the String contains any of the English vowel
      in upper case`, () => {
-      assert.isTrue('thIs'.hasVowels());
+      assert.isTrue(testValues.uppercaseVowelWord.hasVowels());
      });
     it('should return False if the String does NOT contain any English vowel',
       () => {
-        assert.isFalse('cnsnT '.hasVowels());
+        assert.isFalse(testValues.noVowelWord.hasVowels());
       });
     it('should return False for an empty String', () => {
-      assert.isFalse(''.hasVowels());
+      assert.isFalse(testValues.emptyString.hasVowels());
     });
   });
 
   describe('#toUpper()', () => {
     it('should return typeof String for any String', () => {
-      assert.typeOf(''.toUpper(), 'string');
-      assert.typeOf('abc9ef!%$'.toUpper(), 'string');
+      assert.typeOf(testValues.emptyString.toUpper(), 'string');
+      assert.typeOf(testValues.mixedStringUpperCase.toUpper(), 'string');
+      assert.typeOf(testValues.mixedStringLowerCase.toUpper(), 'string');
     });
     it('should return an uppercase version of the String', () => {
-      assert.strictEqual('uppercase'.toUpper(), 'UPPERCASE');
+      assert.strictEqual(testValues.lowerCaseWord.toUpper(), testValues.upperCaseWord);
     });
     it(`should return the String with only all alphabet characters in 
     upper-case`,() => { 
-      assert.strictEqual('8 13 a B c D 700  '.toUpper(),
-       '8 13 A B C D 700  ');
+      assert.strictEqual(testValues.mixedStringLowerCase.toUpper(),
+       testValues.mixedStringUpperCase);
     });
     it('should return and empty String for an empty String', () => {
-      assert.strictEqual(''.toUpper(), '');
+      assert.strictEqual(testValues.emptyString.toUpper(), testValues.emptyString);
     });
   });
 
   describe('#toLower()', () => {
     it('should return typeof String for any String', () => {
-      assert.typeOf(''.toLower(), 'string');
-      assert.typeOf('any String ^ #@+='.toLower(), 'string');
+      assert.typeOf(testValues.emptyString.toLower(), 'string');
+      assert.typeOf(testValues.mixedStringLowerCase.toLower(), 'string');
+      assert.typeOf(testValues.mixedStringUpperCase.toLower(), 'string');
     });
     it('should return a lower case version of the String', () => {
-      assert.strictEqual('SayHello'.toLower(), 'sayhello');
+      assert.strictEqual(testValues.upperCaseWord.toLower(), testValues.lowerCaseWord);
     });
     it(`should return the String with all upper case alphabets 
       converted to lower case`, () => {
-      assert.strictEqual('alphanumer1c HELL0 WorlD'.toLower(),
-        'alphanumer1c hell0 world');
+      assert.strictEqual(testValues.mixedStringUpperCase.toLower(),
+        testValues.mixedStringLowerCase);
     });
     it('should return and empty String for an empty String', () => {
-      assert.strictEqual(''.toLower(), '');
+      assert.strictEqual(testValues.emptyString.toLower(), testValues.emptyString);
     });
   });
 
   describe('#ucFirst()', () => {
     it('should return typeof String for any String', () => {
-      assert.typeOf(''.ucFirst(), 'string');
-      assert.typeOf('2m1xed Str!ng ^&8*'.ucFirst(), 'string');
+      assert.typeOf(testValues.emptyString.ucFirst(), 'string');
+      assert.typeOf(testValues.mixedStringLowerCase.ucFirst(), 'string');
+      assert.typeOf(testValues.mixedStringUpperCase.ucFirst(), 'string');
     });
     it(`should return the String with only the first 
       character (if it's an alphabet) converted to upper case`, () => {
-      assert.strictEqual('aB cd Ef'.ucFirst(), 'AB cd Ef');
-      assert.strictEqual('Ab cd Ef'.ucFirst(), 'Ab cd Ef');
+      assert.strictEqual(testValues.firstLetterLowercase.ucFirst(), 'ABCDEF');
     });
     it('should NOT modify the String if the first character is NOT an alphabet',
      () => {
-       assert.strictEqual('9 tImes 2 = 18'.ucFirst(), '9 tImes 2 = 18');
+       assert.strictEqual(testValues.mixedStringUpperCase.ucFirst(), testValues.mixedStringUpperCase);
     });
     it('should return an empty String for an empty String', () => {
-      assert.strictEqual(''.ucFirst(), '');
+      assert.strictEqual(testValues.emptyString.ucFirst(), testValues.emptyString);
     });
   });
 
   describe('#isQuestion()', () => {
     it('should return typeof Boolean for any String', () => {
-      assert.typeOf(''.isQuestion(), 'boolean');
-      assert.typeOf('mixed String 1@#^&8'.isQuestion(), 'boolean');
+      assert.typeOf(testValues.emptyString.isQuestion(), 'boolean');
+      assert.typeOf(testValues.mixedStringLowerCase.isQuestion(), 'boolean');
+      assert.typeOf(testValues.mixedStringUpperCase.isQuestion(), 'boolean');
     });
     it(`should return True if the String is a question 
       (ends with a question mark)`, () => {
-      assert.isTrue('what is your name ?'.isQuestion());
-      assert.isTrue('?'.isQuestion());
+      assert.isTrue(testValues.question.isQuestion());
     });
     it(`should return False if the String is not a question 
       (does NOT end with a question mark)`, () => {
-      assert.isFalse('what is your name ? '.isQuestion());
-      assert.isFalse('what is your name'.isQuestion());
+      assert.isFalse(testValues.mixedStringLowerCase.isQuestion());
+      assert.isFalse(testValues.mixedStringUpperCase.isQuestion());
     });
     it('should return False for empty Strings', () => {
-      assert.isFalse(''.isQuestion());
+      assert.isFalse(testValues.emptyString.isQuestion());
     });
   });
 
   describe('#words()', () => {
     it('should return instanceof Array for any String', () => {
-      assert.isArray('say something'.words());
-      assert.isArray(''.words());
-      assert.isArray('@343$5%'.words());
+      assert.isArray(testValues.mixedStringLowerCase.words());
+      assert.isArray(testValues.emptyString.words());
+      assert.isArray(testValues.mixedStringUpperCase.words());
     });
     it('returns a correct list of words in the String', () => {
-      assert.deepEqual('what are the words here 0 aa '.words(), [
-        'what',
-        'are',
-        'the',
-        'words',
-        'here',
-        '0',
-        'aa'
-      ]);
-    });
-    it('should NOT include white spaces as words in the String', () => {
-      assert.notDeepEqual('what are '.words(), [
-        'what',
-        ' ',
-        'are',
-        ' '
-      ]);
-      assert.deepEqual('what are '.words(), ['what', 'are']);
-    });
-    it('should treat single alphabets word as words', () => {
-      assert.deepEqual(' a is a single word'.words(), [
-        'a',
-        'is',
-        'a',
-        'single',
-        'word'
-      ]);
+      assert.deepEqual(testValues.question.words(), testValues.questionArray);
     });
   });
 
   describe('#wordCount()', () => {
     it('should return typeof Number for any String', () => {
-      assert.isNumber('how many words have we got here ?'.wordCount());
-      assert.isNumber(''.wordCount());
+      assert.isNumber(testValues.emptyString.wordCount());
+      assert.isNumber(testValues.mixedStringLowerCase.wordCount());
     });
     it('should return the exact number of words in the String', () => {
-      assert.strictEqual('hello world yahoo'.wordCount(), 3);
-    });
-    it('should count single characters as words', () => {
-      assert.strictEqual('a '.wordCount(), 1);
+      assert.strictEqual(testValues.question.wordCount(), 5);
     });
     it('should count non-alphabetic characters as words', () => {
-      assert.strictEqual(' ? ^ * )) explain'.wordCount(), 5);
+      assert.strictEqual(testValues.mixedStringLowerCase.wordCount(), 2);
     });
   });
 
   describe('#toCurrency()', () => {
     it('should return typeof String for a valid String', () => {
-      assert.isString('11111.11'.toCurrency());
+      assert.isString(testValues.validCurrencyString.toCurrency());
     });
     it('should throw an error for invalid Strings', () => {
-      assert.throws(() => { '11111.11.11'.toCurrency(); });
+      assert.throws(() => { testValues.invalidCurrencyString.toCurrency(); });
     });
     it('should NOT throw an error for a Valid String', () => {
-      assert.doesNotThrow(() => { '1111.11'.toCurrency(); });
+      assert.doesNotThrow(() => { testValues.validCurrencyString.toCurrency(); });
     });
     it('should return currency representation of the valid String', () => {
-      assert.strictEqual('11111.11'.toCurrency(), '11,111.11');
-      assert.strictEqual('1100.99'.toCurrency(), '1,100.99');
+      assert.strictEqual(testValues.validCurrencyString.toCurrency(), '1,111,111.1111');
     });
   });
 
   describe('#fromCurrency()', () => {
     it('should return typeof Number', () => {
-      assert.isNumber('1000'.fromCurrency());
-      assert.isNumber('9eee'.fromCurrency());
+      assert.isNumber(testValues.currencyFormatedString.fromCurrency());
+      assert.isNumber(testValues.invalidCurrencyString.fromCurrency());
+      assert.isNumber(testValues.emptyString.fromCurrency());
     });
     it(`should return a number representation for a properly
      formatted String`, () => {
-      assert.strictEqual('11,111,111.11'.fromCurrency(), 11111111.11);
-      assert.strictEqual('11,111.11'.fromCurrency(), 11111.11);
-      assert.strictEqual('11111.11'.fromCurrency(), 11111.11);
+      assert.strictEqual(testValues.currencyFormatedString.fromCurrency(), 1111111.1111);
     });
     it('should return NaN for a wrongly formatted String', () => {
-      assert.isNaN('11e,111.11f'.fromCurrency());
-      assert.isNaN('e111,200.00'.fromCurrency());
+      assert.isNaN(testValues.invalidCurrencyString.fromCurrency());
     });
     it('should return Zero (0) for an empty String', () => {
-      assert.strictEqual(''.fromCurrency(), 0);
+      assert.strictEqual(testValues.emptyString.fromCurrency(), 0);
     });
   });
 
   describe('#inverseCase()', () => {
     it('should return typeof String for any String', () => {
-      assert.isString('word'.inverseCase());
-      assert.isString('^@# he'.inverseCase());
-      assert.isString(''.inverseCase());
+      assert.isString(testValues.mixedStringLowerCase.inverseCase());
+      assert.isString(testValues.mixedStringUpperCase.inverseCase());
+      assert.isString(testValues.currencyFormatedString.inverseCase());
+      assert.isString(testValues.emptyString.inverseCase());
     });
     it(`should return each alphabetic character in the string as an inverse
      of their current case`, () => {
-      assert.strictEqual('Mr. Ben'.inverseCase(), 'mR. bEN');
-      assert.strictEqual('Mr. Ben is 70 years Old'.inverseCase(),
-       'mR. bEN IS 70 YEARS oLD');
+      assert.strictEqual(testValues.noVowelWord.inverseCase(), 'CnST');
+      assert.strictEqual(testValues.mixedStringLowerCase.inverseCase(),
+       '122FOR *8E3$&^34');
      });
   });
 
   describe('#alternatingCase()', () => {
     it('should return typeof Stringfor any String', () => {
-      assert.isString('word'.alternatingCase());
-      assert.isString('#$%re'.alternatingCase());
-      assert.isString(''.alternatingCase());
+      assert.isString(testValues.mixedStringLowerCase.alternatingCase());
+      assert.isString(testValues.mixedStringUpperCase.alternatingCase());
+      assert.isString(testValues.emptyString.alternatingCase());
     });
     it('should return the alphabets in alternating case', () => {
-      assert.strictEqual('Onomatopoeia'.alternatingCase(), 'oNoMaToPoEiA');
+      assert.strictEqual(testValues.oddLengthWord.alternatingCase(), 'sEvEn');
     });
     it(`should return the alphabetic characters in alternating case igonring
      non-alphabetic characters`, () => {
-      assert.strictEqual('rayM0-cheend'.alternatingCase(),
-       'rAyM0-cHeEnD');
+      assert.strictEqual(testValues.mixedStringLowerCase.alternatingCase(),
+       '122fOr *8E3$&^34');
     });
     it('should always start with small case alphabet', () => {
-      assert.strictEqual('bIGGy'.alternatingCase(), 'bIgGy');
-      assert.strictEqual('89 Big boys are in town'.alternatingCase(), '89 bIg BoYs ArE iN tOwN');
+      assert.strictEqual(testValues.evenLengthWord.alternatingCase(), 'eVeN');
     });
   });
 
   describe('#getMiddle()', () => {
     it('should return typeof String for any String', () => {
-      assert.isString('word'.getMiddle());
-      assert.isString(''.getMiddle());
-      assert.isString('$%#@$@a'.getMiddle());
+      assert.isString(testValues.mixedStringLowerCase.getMiddle());
+      assert.isString(testValues.emptyString.getMiddle());
+      assert.isString(testValues.mixedStringUpperCase.getMiddle());
     });
     it('should return double characters for Strings with an even length',
       () => {
-        assert.strictEqual('read'.getMiddle().length, 2);
+        assert.strictEqual(testValues.evenLengthWord.getMiddle().length, 2);
       });
     it('should return single character for Strings with an odd length',
       () => {
-        assert.strictEqual('reads'.getMiddle().length, 1);
+        assert.strictEqual(testValues.oddLengthWord.getMiddle().length, 1);
       });
     it(`should return the correct character at the 
       middle of the String for any String of even length`, () => {
-      assert.strictEqual('reads'.getMiddle(), 'a');
-      assert.strictEqual('ABCDEFGHIJKLMNOPQRSTUVWXY'.getMiddle(), 'M');
+      assert.strictEqual(testValues.evenLengthWord.getMiddle(), 've');
     });
     it(`should return the correct characters at the middle of the 
     String for any String of odd length`, () => {
-      assert.strictEqual('abcdefg'.getMiddle(), 'd');
+      assert.strictEqual(testValues.oddLengthWord.getMiddle(), 'v');
     });
     it('should return an empty String for empty Strings', () => {
-      assert.strictEqual(''.getMiddle(), '');
+      assert.strictEqual(testValues.emptyString.getMiddle(), testValues.emptyString);
     });
   });
 
   describe('#numberWords()', () => {
     it('should return typeof String for any String', () => {
-      assert.isString('word'.numberWords());
-      assert.isString(''.numberWords());
-      assert.isString('#$%@@#f'.numberWords());
+      assert.isString(testValues.mixedStringLowerCase.numberWords());
+      assert.isString(testValues.emptyString.numberWords());
+      assert.isString(testValues.mixedStringUpperCase.numberWords());
     });
     it(`should return the String with all number characters converted
      to their english words`, () => {
-      assert.strictEqual('325'.numberWords(), 'three two five');
+      assert.strictEqual(testValues.doubleDigitString.numberWords(), 'one zero');
     });
   });
 
   describe('#isDigit()', () => {
     it('should return typeof Boolean for any String', () => {
-      assert.isBoolean('1'.isDigit());
-      assert.isBoolean(''.isDigit());
-      assert.isBoolean('*$#4'.isDigit());
+      assert.isBoolean(testValues.emptyString.isDigit());
+      assert.isBoolean(testValues.mixedStringLowerCase.isDigit());
+      assert.isBoolean(testValues.mixedStringUpperCase.isDigit());
     });
     it('should return True for single digits', () => {
-      assert.isTrue('3'.isDigit());
+      assert.isTrue(testValues.digitString.isDigit());
     });
     it('should return False for non-single digits', () => {
-      assert.isFalse('34'.isDigit());
+      assert.isFalse(testValues.doubleDigitString.isDigit());
     });
     it('should return false for non-numeric Strings', () => {
-      assert.isFalse('Y'.isDigit());
-      assert.isFalse('One'.isDigit());
+      assert.isFalse(testValues.lowerCaseWord.isDigit());
     });
     it('should return false for alpha-numeric Strings', () => {
-      assert.isFalse('9F'.isDigit());
+      assert.isFalse(testValues.mixedStringLowerCase.isDigit());
+      assert.isFalse(testValues.mixedStringUpperCase.isDigit());
     });
     it('should return false for empty Strings', () => {
-      assert.isFalse(''.isDigit());
+      assert.isFalse(testValues.emptyString.isDigit());
     });
   });
 
   describe('#doubleCheck()', () => {
-    it('should return typeof Boolean', () => {
-      assert.isBoolean('aa'.doubleCheck());
+    it('should return typeof Boolean for any String', () => {
+      assert.isBoolean(testValues.emptyString.doubleCheck());
+      assert.isBoolean(testValues.mixedStringLowerCase.doubleCheck());
+      assert.isBoolean(testValues.mixedStringUpperCase.doubleCheck());
     });
     it('should return True if the String contains double characters',
       () => {
-        assert.isTrue('aa, !!'.doubleCheck());
-        assert.isTrue('my name hase double characters -> Azeez'.doubleCheck());
+        assert.isTrue(testValues.doubleCharactersWord.doubleCheck());
     });
     it('should return True for double space characters',
       () => {
-        assert.isTrue('  contains double space'.doubleCheck());
+        assert.isTrue(testValues.doubleSpaceWord.doubleCheck());
     });
     it(`should return False if the String does NOT contain double 
       characters`, () => {
-      assert.isFalse('heloworld'.doubleCheck());
-      assert.isFalse(' single space test'.doubleCheck());
+      assert.isFalse(testValues.lowerCaseWord.doubleCheck());
     });
     it('should return false for empty Strings', () => {
-      assert.isFalse(''.doubleCheck());
+      assert.isFalse(testValues.emptyString.doubleCheck());
     });
   });
 });
