@@ -4,7 +4,7 @@ const assert = require('chai').assert;
 // load string extension
 require('../src/string-extension');
 
-// class to hold all our necessary test values
+// class to hold our test values
 const testValues = {
   emptyString: '',
   nonEmptyString: 'Not Empty',
@@ -62,7 +62,8 @@ describe('String Extension', () => {
       assert.typeOf(testValues.mixedStringLowerCase.toUpper(), 'string');
     });
     it('should return an uppercase version of the String', () => {
-      assert.strictEqual(testValues.lowerCaseWord.toUpper(), testValues.upperCaseWord);
+      assert.strictEqual(testValues.lowerCaseWord.toUpper(),
+       testValues.upperCaseWord);
     });
     it(`should return the String with only all alphabet characters in 
     upper-case`,() => { 
@@ -70,7 +71,8 @@ describe('String Extension', () => {
        testValues.mixedStringUpperCase);
     });
     it('should return and empty String for an empty String', () => {
-      assert.strictEqual(testValues.emptyString.toUpper(), testValues.emptyString);
+      assert.strictEqual(testValues.emptyString.toUpper(),
+       testValues.emptyString);
     });
   });
 
@@ -81,7 +83,8 @@ describe('String Extension', () => {
       assert.typeOf(testValues.mixedStringUpperCase.toLower(), 'string');
     });
     it('should return a lower case version of the String', () => {
-      assert.strictEqual(testValues.upperCaseWord.toLower(), testValues.lowerCaseWord);
+      assert.strictEqual(testValues.upperCaseWord.toLower(),
+       testValues.lowerCaseWord);
     });
     it(`should return the String with all upper case alphabets 
       converted to lower case`, () => {
@@ -89,7 +92,8 @@ describe('String Extension', () => {
         testValues.mixedStringLowerCase);
     });
     it('should return and empty String for an empty String', () => {
-      assert.strictEqual(testValues.emptyString.toLower(), testValues.emptyString);
+      assert.strictEqual(testValues.emptyString.toLower(),
+       testValues.emptyString);
     });
   });
 
@@ -105,10 +109,12 @@ describe('String Extension', () => {
     });
     it('should NOT modify the String if the first character is NOT an alphabet',
      () => {
-       assert.strictEqual(testValues.mixedStringUpperCase.ucFirst(), testValues.mixedStringUpperCase);
+       assert.strictEqual(testValues.mixedStringUpperCase.ucFirst(),
+        testValues.mixedStringUpperCase);
     });
     it('should return an empty String for an empty String', () => {
-      assert.strictEqual(testValues.emptyString.ucFirst(), testValues.emptyString);
+      assert.strictEqual(testValues.emptyString.ucFirst(),
+       testValues.emptyString);
     });
   });
 
@@ -161,13 +167,18 @@ describe('String Extension', () => {
       assert.isString(testValues.validCurrencyString.toCurrency());
     });
     it('should throw an error for invalid Strings', () => {
-      assert.throws(() => { testValues.invalidCurrencyString.toCurrency(); });
+      assert.throws(() => {
+        testValues.invalidCurrencyString.toCurrency();
+      });
     });
     it('should NOT throw an error for a Valid String', () => {
-      assert.doesNotThrow(() => { testValues.validCurrencyString.toCurrency(); });
+      assert.doesNotThrow(() => {
+        testValues.validCurrencyString.toCurrency();
+      });
     });
     it('should return currency representation of the valid String', () => {
-      assert.strictEqual(testValues.validCurrencyString.toCurrency(), '1,111,111.1111');
+      assert.strictEqual(testValues.validCurrencyString.toCurrency(),
+       '1,111,111.1111');
     });
   });
 
@@ -179,7 +190,8 @@ describe('String Extension', () => {
     });
     it(`should return a number representation for a properly
      formatted String`, () => {
-      assert.strictEqual(testValues.currencyFormatedString.fromCurrency(), 1111111.1111);
+      assert.strictEqual(testValues.currencyFormatedString.fromCurrency(),
+       1111111.1111);
     });
     it('should return NaN for a wrongly formatted String', () => {
       assert.isNaN(testValues.invalidCurrencyString.fromCurrency());
@@ -246,7 +258,8 @@ describe('String Extension', () => {
       assert.strictEqual(testValues.oddLengthWord.getMiddle(), 'v');
     });
     it('should return an empty String for empty Strings', () => {
-      assert.strictEqual(testValues.emptyString.getMiddle(), testValues.emptyString);
+      assert.strictEqual(testValues.emptyString.getMiddle(),
+       testValues.emptyString);
     });
   });
 
@@ -258,7 +271,8 @@ describe('String Extension', () => {
     });
     it(`should return the String with all number characters converted
      to their english words`, () => {
-      assert.strictEqual(testValues.doubleDigitString.numberWords(), 'one zero');
+      assert.strictEqual(testValues.doubleDigitString.numberWords(),
+       'one zero');
     });
   });
 
