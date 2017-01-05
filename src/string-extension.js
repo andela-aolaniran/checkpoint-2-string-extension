@@ -1,3 +1,5 @@
+'use strict';
+
 /* Object containing all feature methods to
  be added to the String class*/
 const stringExtension = {
