@@ -22,15 +22,30 @@ are added to the String class.
 15. doubleCheck() - Returns a Boolean. True if the String contains double characters(including whitespace character), otherwise False.
 
 ### Contributing
-1. Fork this repository
-2. Clone your repository
+1. Fork this repository to your GitHub account
+2. Clone the forked repository
 3. Create your feature branch
 4. Commit your changes
 5. Push to the remote branch
 6. Open a Pull Request
 
+### Technologies
+* [node.js] - Event-driven I/O server-side JavaScript environment
+* [Gulp] - Automate and enhance workflow
+* [mocha] - Testing framework
+
+### Limitations
+  - It assumes the user has basic familiarity with the technologies used
+  - It implements just a few of several custom features that can be added to the String class
 
 License
 ----
 
 MIT
+
+
+    [git-repo-url]: <https://github.com/andela-aolaniran/checkpoint-2-string-extension>
+    [karma]: <https://karma-runner.github.io/>
+    [mocha]: <https://mochajs.org/>
+    [node.js]: <http://nodejs.org>
+    [Gulp]: <http://gulpjs.com>
