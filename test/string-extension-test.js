@@ -20,6 +20,7 @@ const testValues = {
   question: 'What is your name ?',
   questionArray: ['What', 'is', 'your', 'name', '?'],
   validCurrencyString: '1111111.1111',
+  validThreeDigitCurrencyString: '111',
   invalidCurrencyString: '11111.1111.111a',
   currencyFormatedString: '1,111,111.1111',
   doubleCharactersWord: 'hello',
@@ -176,9 +177,11 @@ describe('String Extension', () => {
         testValues.validCurrencyString.toCurrency();
       });
     });
-    it('should return currency representation of the valid String', () => {
+    it('should return currency representation of any valid String', () => {
       assert.strictEqual(testValues.validCurrencyString.toCurrency(),
        '1,111,111.1111');
+      assert.strictEqual(testValues.validThreeDigitCurrencyString.toCurrency(),
+       '111.00');
     });
   });
 
