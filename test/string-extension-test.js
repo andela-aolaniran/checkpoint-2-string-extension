@@ -71,7 +71,7 @@ describe('String Extension', () => {
       assert.strictEqual(testValues.mixedStringLowerCase.toUpper(),
        testValues.mixedStringUpperCase);
     });
-    it('should return and empty String for an empty String', () => {
+    it('should return an empty String for an empty String', () => {
       assert.strictEqual(testValues.emptyString.toUpper(),
        testValues.emptyString);
     });
@@ -92,7 +92,7 @@ describe('String Extension', () => {
       assert.strictEqual(testValues.mixedStringUpperCase.toLower(),
         testValues.mixedStringLowerCase);
     });
-    it('should return and empty String for an empty String', () => {
+    it('should return an empty String for an empty String', () => {
       assert.strictEqual(testValues.emptyString.toLower(),
        testValues.emptyString);
     });
