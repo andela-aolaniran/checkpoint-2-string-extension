@@ -76,14 +76,8 @@ const stringExtension = {
       throw new Error('Invalid String');
     }
     const mantissa = parts[1] ? parts[1] : '00';
-    const characteristic = parts[0];
-    let builtCharacteristic = '';
-    for (let i = characteristic.length - 1, j = 1; i >= 0; i -= 1, j += 1) {
-      builtCharacteristic = `${characteristic[i]}${builtCharacteristic}`;
-      if (j % 3 === 0 && j !== characteristic.length) {
-        builtCharacteristic = `,${builtCharacteristic}`;
-      }
-    }
+    const builtCharacteristic =
+      parts[0].replace(/\B(?=([0-9]{3})+(?![0-9]))/g, ',');
     return `${builtCharacteristic}.${mantissa}`;
   },
   /**
