@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 // chai dependency
 const assert = require('chai').assert;
@@ -23,14 +23,14 @@ describe('String Extension', () => {
     });
     it(`should return True if the String contains any of the English vowel in
      lower case`, () => {
-        testValue = 'CHAI there is god o';
-        assert.isTrue(testValue.hasVowels());
-      });
+      testValue = 'CHAI there is god o';
+      assert.isTrue(testValue.hasVowels());
+    });
     it(`should return True if the String contains any of the English vowel
      in upper case`, () => {
-        testValue = 'chai there is god O';
-        assert.isTrue(testValue.hasVowels());
-     });
+      testValue = 'chai there is god O';
+      assert.isTrue(testValue.hasVowels());
+    });
     it('should return False if the String does NOT contain any English vowel',
       () => {
         testValue = 'cnst';
@@ -55,7 +55,7 @@ describe('String Extension', () => {
        expectedValue);
     });
     it(`should return the String with only all alphabet characters in 
-    upper-case`,() => { 
+    upper-case`, () => {
       testValue = '~ hello world 123';
       expectedValue = '~ HELLO WORLD 123';
       assert.strictEqual(testValue.toUpper(),
@@ -82,10 +82,10 @@ describe('String Extension', () => {
     });
     it(`should return the String with ONLY all upper case alphabets 
       converted to lower case`, () => {
-        testValue = '12 AbCdEfGh';
-        expectedValue = '12 abcdefgh';
-        assert.strictEqual(testValue.toLower(),
-          expectedValue);
+      testValue = '12 AbCdEfGh';
+      expectedValue = '12 abcdefgh';
+      assert.strictEqual(testValue.toLower(),
+      expectedValue);
     });
     it('should return an empty String for an empty String', () => {
       assert.strictEqual(emptyWord.toLower(),
@@ -102,17 +102,17 @@ describe('String Extension', () => {
     });
     it(`should return the String with only the first 
       character (if it's an alphabet) converted to upper case`, () => {
-        testValue = 'hello';
-        expectedValue = 'Hello';
-        assert.strictEqual(testValue.ucFirst(), expectedValue);
+      testValue = 'hello';
+      expectedValue = 'Hello';
+      assert.strictEqual(testValue.ucFirst(), expectedValue);
     });
     it('should NOT modify the String if the first character is NOT an alphabet',
      () => {
        testValue = '1 hello';
        expectedValue = '1 hello';
        assert.strictEqual(testValue.ucFirst(),
-        expectedValue);
-    });
+       expectedValue);
+     });
     it('should return an empty String for an empty String', () => {
       assert.strictEqual(emptyWord.ucFirst(),
        emptyWord);
@@ -128,13 +128,13 @@ describe('String Extension', () => {
     });
     it(`should return True if the String is a question 
       (ends with a question mark)`, () => {
-        testValue = 'What is your name ?';
-        assert.isTrue(testValue.isQuestion());
+      testValue = 'What is your name ?';
+      assert.isTrue(testValue.isQuestion());
     });
     it(`should return False if the String is not a question 
       (does NOT end with a question mark)`, () => {
-        testValue = 'this is not a question';
-        assert.isFalse(testValue.isQuestion());
+      testValue = 'this is not a question';
+      assert.isFalse(testValue.isQuestion());
     });
     it('should return False for empty Strings', () => {
       assert.isFalse(emptyWord.isQuestion());
@@ -150,7 +150,8 @@ describe('String Extension', () => {
     });
     it('returns a correct list of words in the String', () => {
       testValue = 'hello world it is a beautiful morning';
-      expectedValue = ['hello', 'world', 'it', 'is', 'a', 'beautiful', 'morning'];
+      expectedValue = ['hello', 'world', 'it', 'is', 'a',
+        'beautiful', 'morning'];
       assert.deepEqual(testValue.words(), expectedValue);
     });
     it('returns an empty array for an empty String', () => {
@@ -173,7 +174,8 @@ describe('String Extension', () => {
       assert.strictEqual(testValue.wordCount(), expectedValue);
     });
     it('should count non-alphabetic characters as words', () => {
-      testValue = 'sentence with non-alphabetic characters 1 3 4 ! ? has 12 words';
+      testValue = `sentence with non-alphabetic characters 
+      1 3 4 ! ? has 12 words`;
       expectedValue = 12;
       assert.strictEqual(testValue.wordCount(), expectedValue);
     });
@@ -201,12 +203,13 @@ describe('String Extension', () => {
         testValue.toCurrency();
       });
     });
-    it('should return correct currency representation of a valid String', () => {
-      testValue = '1111111.11';
-      expectedValue = '1,111,111.11';
-      assert.strictEqual(testValue.toCurrency(),
+    it('should return correct currency representation of a valid String',
+     () => {
+       testValue = '1111111.11';
+       expectedValue = '1,111,111.11';
+       assert.strictEqual(testValue.toCurrency(),
        expectedValue);
-    });
+     });
   });
 
   describe('#fromCurrency()', () => {
@@ -218,10 +221,10 @@ describe('String Extension', () => {
     });
     it(`should return a number representation for a properly
      formatted String`, () => {
-       testValue = '1,111,111.11';
-       expectedValue = 1111111.11;
+      testValue = '1,111,111.11';
+      expectedValue = 1111111.11;
       assert.strictEqual(testValue.fromCurrency(),
-       expectedValue);
+        expectedValue);
     });
     it('should return NaN for a wrongly formatted/invalid String', () => {
       testValue = '1,1111.111.111';
@@ -241,10 +244,10 @@ describe('String Extension', () => {
     });
     it(`should return each alphabetic character in the string as an inverse
      of their current case`, () => {
-       testValue = 'aBcDeFgHiJk 123 f';
-       expectedValue = 'AbCdEfGhIjK 123 F';
+      testValue = 'aBcDeFgHiJk 123 f';
+      expectedValue = 'AbCdEfGhIjK 123 F';
       assert.strictEqual(testValue.inverseCase(), expectedValue);
-     });
+    });
   });
 
   describe('#alternatingCase()', () => {
@@ -256,13 +259,13 @@ describe('String Extension', () => {
     });
     it('should return the alphabets in alternating case', () => {
       testValue = 'Seven';
-      expectedValue = 'sEvEn'
+      expectedValue = 'sEvEn';
       assert.strictEqual(testValue.alternatingCase(), expectedValue);
     });
     it(`should return the alphabetic characters in alternating case igonring
      non-alphabetic characters`, () => {
-       testValue = '1 2 3 4 5 six seven';
-       expectedValue = '1 2 3 4 5 sIx SeVeN';
+      testValue = '1 2 3 4 5 six seven';
+      expectedValue = '1 2 3 4 5 sIx SeVeN';
       assert.strictEqual(testValue.alternatingCase(),
        expectedValue);
     });
@@ -297,9 +300,9 @@ describe('String Extension', () => {
       });
     it(`should return the correct character at the 
       middle of the String for any String of even length`, () => {
-        testValue = 'Yahoo!';
-        expectedValue = 'ho';
-        assert.strictEqual(testValue.getMiddle(), expectedValue);
+      testValue = 'Yahoo!';
+      expectedValue = 'ho';
+      assert.strictEqual(testValue.getMiddle(), expectedValue);
     });
     it(`should return the correct characters at the middle of the 
     String for any String of odd length`, () => {
@@ -322,12 +325,12 @@ describe('String Extension', () => {
     });
     it(`should return the String with all number characters converted
      to their english words`, () => {
-       testValue = '123';
-       expectedValue = 'one two three';
+      testValue = '123';
+      expectedValue = 'one two three';
       assert.strictEqual(testValue.numberWords(),
        expectedValue);
     });
-    it(`should return an empty String for an empty String`, () => {
+    it('should return an empty String for an empty String', () => {
       assert.strictEqual(emptyWord.numberWords(), emptyWord);
     });
   });
@@ -368,17 +371,17 @@ describe('String Extension', () => {
     });
     it('should return True if the String contains double characters',
       () => {
-        testValue = `Don't you give up !!`;
+        testValue = 'Do not you give up !!';
         assert.isTrue(testValue.doubleCheck());
-    });
+      });
     it('should return True for double space characters',
       () => {
         testValue = '  never give up';
         assert.isTrue(testValue.doubleCheck());
-    });
+      });
     it(`should return False if the String does NOT contain double 
       characters`, () => {
-        testValue = `We don't have double characters here`;
+      testValue = 'We do not have double characters here';
       assert.isFalse(testValue.doubleCheck());
     });
     it('should return false for empty Strings', () => {
@@ -386,4 +389,3 @@ describe('String Extension', () => {
     });
   });
 });
-
