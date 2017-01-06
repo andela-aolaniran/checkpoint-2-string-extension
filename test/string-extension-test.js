@@ -204,6 +204,17 @@ describe('String Extension', () => {
         testValue.toCurrency();
       });
     });
+    it(`should throw an error with the message 'Invalid String' (Strings 
+    containing Symbols other than the decimal point and digits)`, () => {
+      testValue = '100000qg  @#@$';
+      expectedValue = Error('Invalid String');
+      try {
+        testValue.toCurrency();
+      } catch (err) {
+        assert.deepEqual(err, expectedValue);
+        assert.strictEqual(err.message, expectedValue.message);
+      }
+    });
     it('should NOT throw an error for a Valid String', () => {
       assert.doesNotThrow(() => {
         testValue = '1000000.11';
