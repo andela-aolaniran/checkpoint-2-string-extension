@@ -9,7 +9,7 @@
   </head>
 
   <body ng-controller="appController">
-    <select ng-model="selectedOption" ng-options="item for item in options">
+    <select ng-model="selectedOption" ng-change="testResult = ''" ng-options="item for item in options">
       <option style="display:none" value="">Select Option</option>
     </select>
     <input type="text" placeholder="Enter Text/String" ng-model="userInput" ng-keypress="$event.which === 13 && testUserInput(userInput)">
