@@ -306,8 +306,8 @@ describe('String Extension', () => {
     });
     it(`should return the correct characters at the middle of the 
     String for any String of odd length`, () => {
-      testValue = 'characters';
-      expectedValue = 'ac';
+      testValue = 'character';
+      expectedValue = 'a';
       assert.strictEqual(testValue.getMiddle(), expectedValue);
     });
     it('should return an empty String for an empty String', () => {
