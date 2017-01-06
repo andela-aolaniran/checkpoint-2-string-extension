@@ -71,7 +71,7 @@ const stringExtension = {
   },
   /**
   * Create a currency representation of this String
-  * @return{String} - A String formated to Currency
+  * @return{String} - A String formatted to Currency
   */
   toCurrency() {
     // get the mantissa and characteristic
