@@ -6,7 +6,7 @@ const mocha = require('gulp-mocha');
   whenever the src or test files changes
 */
 gulp.task('test', () => {
-  gulp.watch(['./src/*.js', './test/*.js'], ['mocha']);
+  gulp.watch(['./src/js/*.js', './test/*.js'], ['mocha']);
 });
 
 // gulp task to run tests using mocha

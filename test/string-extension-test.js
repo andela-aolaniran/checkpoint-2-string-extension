@@ -4,7 +4,7 @@
 const assert = require('chai').assert;
 
 // load string extension
-require('../src/string-extension');
+require('../src/js/string-extension');
 
 const emptyWord = '';
 const alphaNumericWord = 'abcdefgh1234567890';

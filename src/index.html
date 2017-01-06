@@ -1,1 +1,23 @@
-hello world world
+<!DOCTYPE html>
+
+<html ng-app="app">
+  <head>
+    <title>String Checker</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+
+  <body ng-controller="appController">
+    <select ng-model="selectedOption" ng-options="item for item in options">
+      <option style="display:none" value="">Select Option</option>
+    </select>
+    <input type="text" placeholder="Enter Text/String" ng-model="userInput" ng-keypress="$event.which === 13 && testUserInput(userInput)">
+    <input type="button" value="Test String" ng-click="testUserInput(userInput)">
+    <textarea readonly>{{testResult}}</textarea>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="js/string-extension.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
