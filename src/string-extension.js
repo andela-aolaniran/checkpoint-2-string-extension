@@ -76,7 +76,7 @@ const stringExtension = {
   toCurrency() {
     // get the mantissa and characteristic
     const parts = this.split('.');
-    if (parts.length > 2) {
+    if (parts.length > 2 || /[^0-9.]/g.test(this)) {
       throw new Error('Invalid String');
     }
     const mantissa = parts[1] ? parts[1] : '00';
