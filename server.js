@@ -3,9 +3,11 @@ const express = require('express');
 
 // initialize express app
 const app = express();
-
+// set static page folder
+app.use(express.static('src'));
+// set default route
 app.get('/', (req, res) => {
-	res.send('Hello World');
+  res.sendFile('index.html');
 });
 // select port
 const port = process.env.PORT || 3090;
