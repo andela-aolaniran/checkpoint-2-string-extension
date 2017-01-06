@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 /* Object containing all feature methods to
  be added to the String class*/
@@ -54,6 +54,10 @@ const stringExtension = {
   * @return{Array} - An array containing all the words in this string
   */
   words() {
+    // Check for empty String
+    if (!this) {
+      return [];
+    }
     // remove trailing white spaces
     return this.trim()
       .split(/\s+/g);
