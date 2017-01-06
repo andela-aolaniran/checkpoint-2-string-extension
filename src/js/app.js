@@ -15,7 +15,7 @@ appModule.controller('appController',['$scope', ($scope) => {
     'inverseCase',
     'getMiddle',
     'numberWords',
-    'inverseCase',
+    'alternatingCase',
     'isDigit',
     'doubleCheck'
   ];
