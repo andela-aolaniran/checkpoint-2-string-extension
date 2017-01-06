@@ -262,7 +262,7 @@ describe('String Extension', () => {
       expectedValue = 'sEvEn';
       assert.strictEqual(testValue.alternatingCase(), expectedValue);
     });
-    it(`should return the alphabetic characters in alternating case igonring
+    it(`should return the alphabetic characters in alternating case ignoring
      non-alphabetic characters`, () => {
       testValue = '1 2 3 4 5 six seven';
       expectedValue = '1 2 3 4 5 sIx SeVeN';
