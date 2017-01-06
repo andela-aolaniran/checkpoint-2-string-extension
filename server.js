@@ -9,6 +9,10 @@ app.use(express.static('src'));
 app.get('/', (req, res) => {
   res.sendFile('index.html');
 });
+// unkown routes
+app.get('*', (req, res) => {
+  res.send('Page Not Found');
+});
 // select port
 const port = process.env.PORT || 3090;
 // start server
