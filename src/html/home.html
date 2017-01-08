@@ -1,0 +1,38 @@
+ <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href>String Tester</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href>Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#help">Help</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="app-container">
+  <div class="input-group">
+    <span  class="input-group-btn selection">
+      <select class="form-control select" ng-model="selectedOption" ng-change="testResult = ''" ng-options="item for item in options"> 
+        <option value="" selected="selected">Method ?</option>
+      </select> 
+    </span>
+    <input class="form-control" type="text" placeholder="Enter Text/String" ng-model="userInput" ng-keypress="$event.which === 13 && testUserInput(userInput)">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="button" ng-click="testUserInput(userInput)">
+       Check <span class="glyphicon glyphicon-question-sign"></span>
+      </button>
+    </span>
+  </div>
+  <hr>
+  <div>
+    <textarea class="output" readonly>{{testResult}}</textarea>
+  </div>
+</div>

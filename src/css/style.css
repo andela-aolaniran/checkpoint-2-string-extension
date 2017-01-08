@@ -1,0 +1,52 @@
+
+body {
+  margin: 0;
+  padding-bottom: 50%;
+}
+
+.navbar {
+  border-radius: 0;
+}
+
+div.app-container {
+  width: 600px;
+  margin: auto;
+}
+
+span.selection {
+  width: auto;
+  font-size: 10px;
+}
+
+textarea.output {
+  width: 100%;
+  padding: 10px;
+}
+
+.footer {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+}
+
+@media only screen and (min-width: 320px) {
+  div.app-container {
+    width: 320px;
+    margin: auto;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  div.app-container {
+    width: 600px;
+    margin: auto;
+  }
+}

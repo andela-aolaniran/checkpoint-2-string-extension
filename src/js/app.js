@@ -1,7 +1,26 @@
 // create angular module
-const appModule = angular.module('app', []);
+const appModule = angular.module('app', ['ngRoute']);
+
+// set up routes
+appModule.config(($routeProvider) => {
+  $routeProvider
+    .when('/about', {
+      templateUrl: 'html/about.html'
+    })
+    .when('/', {
+      templateUrl: 'html/home.html',
+      controller: 'appController'
+    })
+    .when('/help', {
+      templateUrl: 'html/help.html'
+    })
+    .otherwise({
+      templateUrl: 'html/home.html'
+    });
+});
+
 // set up controller
-appModule.controller('appController',['$scope', ($scope) => {
+appModule.controller('appController', ['$scope', ($scope) => {
   $scope.options = [
     'hasVowels',
     'toUpper',
